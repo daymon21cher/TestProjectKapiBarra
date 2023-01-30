@@ -1,0 +1,16 @@
+{
+  "name": "test/phonebook",
+  "description": "phonebook app",
+  "require": {
+    "propel/propel": "2.0.0-beta2",
+    "klein/klein": "v2.1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Phonebook\\": "generated-classes/Phonebook"
+    },
+    "classmap": [
+      "/test/"
+    ]
+  }
+}

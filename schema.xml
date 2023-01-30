@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="Phonebook" defaultPhpNamingMethod="nochange">
+    <table name="region_type" phpName="Region_type">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="value" type="varchar" size="255" />
+    </table>
+    <table name="street_type" phpName="Street_type">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="value" type="varchar" size="255" />
+    </table>
+    <table name="city_type" phpName="City_type">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="value" type="varchar" size="255" />
+    </table>
+    <table name="building_type" phpName="Building_type">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="value" type="varchar" size="255" />
+    </table>
+    <table name="person" phpName="Person">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="first_name" type="varchar" size="255" required="true" />
+        <column name="last_name" type="varchar" size="255" required="true" />
+        <column name="phone" type="integer" required="true"/>
+        <column name="address_id" type="integer" required="true"/>
+        <foreign-key foreignTable="address">
+            <reference local="address_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="address" phpName="Address">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="address_str" type="varchar" size="255" />
+        <column name="building_number" type="varchar" size="255" />
+        <column name="number" type="varchar" size="255" />
+        <column name="street_id" type="integer" />
+        <column name="building_type_id" type="integer" />
+        <foreign-key foreignTable="street">
+            <reference local="street_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="building_type">
+            <reference local="building_type_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="street" phpName="Street">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" />
+        <column name="street_type_id" type="integer"/>
+        <column name="city_id" type="integer" />
+        <foreign-key foreignTable="city">
+            <reference local="city_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="street_type">
+            <reference local="street_type_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="city" phpName="City">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" />
+        <column name="region_id" type="integer" />
+        <column name="city_type_id" type="integer" />
+        <foreign-key foreignTable="region">
+            <reference local="region_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="city_type">
+            <reference local="city_type_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    <table name="region" phpName="Region">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="name" type="varchar" size="255" />
+        <column name="region_type_id" type="integer" />
+        <foreign-key foreignTable="region_type">
+            <reference local="region_type_id" foreign="id"/>
+        </foreign-key>
+    </table>
+</database>

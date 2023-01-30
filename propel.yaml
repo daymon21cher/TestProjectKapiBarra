@@ -1,0 +1,22 @@
+propel:
+  database:
+    connections:
+      default:
+        adapter: mysql
+        classname: Propel\Runtime\Connection\ConnectionWrapper
+        dsn: mysql:host=localhost;dbname=u1919942_default
+        user: u1919942_default
+        password: q5Gu86lQjh4MTIhj
+        attributes:
+        settings:
+          charset: utf8mb4
+          queries:
+            utf8: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci, COLLATION_CONNECTION = utf8mb4_unicode_ci, COLLATION_DATABASE = utf8mb4_unicode_ci, COLLATION_SERVER = utf8mb4_unicode_ci"
+  runtime:
+    defaultConnection: default
+    connections:
+      - default
+  generator:
+    defaultConnection: default
+    connections:
+      - default
